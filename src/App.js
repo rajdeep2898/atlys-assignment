@@ -49,15 +49,11 @@ function App() {
       const rect2 = div2.getBoundingClientRect();
 
       console.log("rect1 rect2", rect1, rect2)
-      // Calculate start and end points
-      // const startX = rect1.left + rect1.width / 2;
-      // const startY = rect1.bottom;
       const startX = rect1.left + 4 - 215;
       const startY = rect1.bottom - 40 - 8;
       const endX = rect2.left + rect2.width - 20 + 8 - 215;
       const endY = rect2.bottom - 40 - 8;
 
-      // Calculate control points for the curve
       let controlX1 = startX;
       let controlY1 = (startY + endY) / 2;
       if(startY==endY) controlY1-=50
@@ -65,7 +61,6 @@ function App() {
       let controlY2 = (startY + endY) / 2;
       if(startY==endY) controlY2-=50
 
-      // Create the curved path
       const curve = `M ${startX},${startY} C ${controlX1},${controlY1} ${controlX2},${controlY2} ${endX},${endY}`;
       path.setAttribute("d", curve);
     };
@@ -93,16 +88,15 @@ function App() {
       const endX = rect2.left + rect2.width / 2 - 40;
       const endY = rect2.bottom -rect2.width/2 - 40 ;
 
-      // Calculate control points for the curve
       const controlX1 = startX;
       const controlY1 = (startY + endY) / 2;
       const controlX2 = endX;
       const controlY2 = (startY + endY) / 2;
 
-      // Create the curved path
       const curve = `M ${startX},${startY} C ${controlX1},${controlY1} ${controlX2},${controlY2} ${endX},${endY}`;
       path.setAttribute("d", curve);
     }
+
     if (inputOutputPathRefs.current) {
       let inputDiv = document.getElementsByClassName("circle-start")
       let outputDiv = document.getElementsByClassName("circle-input")
@@ -128,7 +122,7 @@ function App() {
     <div className="app">
       <div className="function-container">
         <svg className="curve-line" xmlns="http://www.w3.org/2000/svg">
-          {inputBoxes.slice(0, -1).map((_, index) => (
+          {inputOutputLines.map((_, index) => (
             <path
               key={index}
               ref={(el) => (inputOutputPathRefs.current[index] = el)}
@@ -154,11 +148,9 @@ function App() {
 
           {inputBoxes.map((name, index) => (
             <div
-              // ref={(el) => (refs.current[index] = el!)}
               key={index}
               id={`box${index}`}
               className="function-wrapper"
-            // ref={box1Ref}
             >
               <FunctionCard
                 id={index + 1}
@@ -169,7 +161,7 @@ function App() {
                   setEquations(newEquations);
                 }}
                 nextFunction={
-                  index < 4 ? `Function ${[2, 4, 5, 3][index]}` : "Final Output"
+                  index !=2 ? `Function ${[2, 4, 1, 5, 3][index]}` : "Final Output"
                 }
               />
             </div>
