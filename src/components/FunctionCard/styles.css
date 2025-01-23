@@ -1,0 +1,35 @@
+.function-card {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+.connect-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.circle-input,.circle-output {
+    border-radius: 100%;
+    border: 4px solid gray;
+    width: 8px;
+    height: 8px;
+    margin: 0px 8px;
+    background-color: rgb(0, 150, 255);
+}
+/* .connect-section div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+} */
+.connect-section-input, .connect-section-output {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.field {
+    margin-top: 16px;
+}
