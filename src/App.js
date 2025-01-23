@@ -58,10 +58,12 @@ function App() {
       const endY = rect2.bottom - 40 - 8;
 
       // Calculate control points for the curve
-      const controlX1 = startX;
-      const controlY1 = (startY + endY) / 2;
-      const controlX2 = endX;
-      const controlY2 = (startY + endY) / 2;
+      let controlX1 = startX;
+      let controlY1 = (startY + endY) / 2;
+      if(startY==endY) controlY1-=50
+      let controlX2 = endX;
+      let controlY2 = (startY + endY) / 2;
+      if(startY==endY) controlY2-=50
 
       // Create the curved path
       const curve = `M ${startX},${startY} C ${controlX1},${controlY1} ${controlX2},${controlY2} ${endX},${endY}`;
